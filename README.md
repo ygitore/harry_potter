@@ -12,8 +12,8 @@
 In this exercise, your task to build a workflow for making, and firing pottery, and then determining if it should be sold at a craft show.
 
 1. Define a function that is responsible for making a piece of pottery.
-    1. The function should output an object that represents a piece of pottery.
-    1. The object should describe its shape, weight, and height.
+    1. The function should return a new object that represents a piece of pottery.
+    1. The object should describe the shape, weight, and height of the piece of pottery.
     1. The function should take all three of those properties as input to generate the object.
     1. The function should also add an `id` property to the object whose value is an integer, and each object should have a unique `id` value. Use a globally-scoped variable and increment it each time an object is created.
 1. Define a function that is responsible for acting as a kiln. It should take a pottery object as input and also the temperature of the kiln as input. It should add a new property of `fired` with the value of `true` to the object. It should output the pottery object.
