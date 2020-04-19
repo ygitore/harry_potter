@@ -7,15 +7,17 @@ export const PotteryList = () => {
 
     contentTarget.innerHTML = pottery.reduce(
         (html, piece) => {
-            html += `<section class="pottery">
-    <h2 class="pottery__shape">${piece.shape}</h2>
-    <div class="pottery_properties">
-        Item weighs ${piece.weight} grams and is ${piece.height} cm in height
-    </div>
-    <div class="pottery__price">
-        Price is $${piece.price}
-    </div>
-</section>`
+            html += `
+                <section class="pottery">
+                    <h2 class="pottery__shape">${piece.shape}</h2>
+                    <div class="pottery_properties">
+                        Item weighs ${piece.weight} grams and is ${piece.height} cm in height
+                    </div>
+                    <div class="pottery__price">
+                        Price is $${piece.price}
+                    </div>
+                </section>
+            `
             return html
         }
     , "")

@@ -17,23 +17,37 @@ test('Pottery object to be created with correct properties', () => {
         )
 })
 
-test('Pottery object to be cracked when temperature is above 2200', () => {
-    expect(
-        firePottery(piece, 2300)
-    )
-        .toMatchObject(
-            { shape: "Mug", weight: 10, height: 8, id: 1, cracked: true }
-        )
+describe('Firing the pottery in the kiln that is too hot', () => {
+    beforeAll(() => {
+        piece = firePottery(piece, 2200)
+    })
+
+    test('Pottery object to be cracked when temperature is above 2200', () => {
+        expect( piece.cracked ).toBe( true )
+    })
+
+    test('Pottery marked as fired after going in the kiln', () => {
+        expect( piece.fired ).toBe( true )
+    })
 })
 
-test('Pottery object to not be cracked when temperature is below 2200', () => {
-    expect(
-        firePottery(piece, 2000)
-    )
-        .toMatchObject(
-            { shape: "Mug", weight: 10, height: 8, id: 1, cracked: false }
-        )
+
+describe('Firing the pottery in the kiln with the correct temperate', () => {
+    beforeAll(() => {
+        piece = firePottery(piece, 2100)
+    })
+
+    test('Pottery object to be uncracked when temperature is below 2200', () => {
+        expect( piece.cracked ).toBe( false )
+    })
+
+    test('Pottery marked as fired after going in the kiln', () => {
+        expect( piece.fired ).toBe( true )
+    })
 })
+
+
+
 
 describe('Do not sell cracked pottery', () => {
     let catalog = []

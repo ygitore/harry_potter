@@ -1,41 +1,46 @@
-# JavaScript Review
-
-## Setup
-
-1. Fork this repository into your Github account.
-1. Clone your repo to your machine.
-1. Create a branch named `make-pottery-{your initials}`.
-1. Do all of your work for Part I on this branch.
+# Core JavaScript Review
 
 ## The Hairy Potter - Part I
 
 In this exercise, your task to build a workflow for making, and firing pottery, and then determining if it should be sold at a craft show.
 
-1. Define a function that is responsible for making a piece of pottery.
-    1. The function should return a new object that represents a piece of pottery.
-    1. The object should describe the shape, weight, and height of the piece of pottery.
-    1. The function should take all three of those properties as input to generate the object.
-    1. The function should also add an `id` property to the object whose value is an integer, and each object should have a unique `id` value. Use a globally-scoped variable and increment it each time an object is created.
-1. Define a function that is responsible for acting as a kiln. It should take a pottery object as input and also the temperature of the kiln as input. It should add a new property of `fired` with the value of `true` to the object. It should output the pottery object.
-    1. If the temperature of the kiln is above 2200 degrees then the pottery object should have a new property of `cracked` added to it, with a value of `true`.
-    1. If the temperature of the kiln is below, or equal to, 2200 degrees then the pottery object should have a new property of `cracked` added to it, with a value of `false`.
-1. Define a function that is responsible for determining if a piece of pottery should be sold. Cracked pottery should not be sold, and non-cracked pottery should be sold.
-    1. If the weight of the piece of pottery is over 3, then it should get a `price` property with a value of 40.
-    1. If the weight is under 3, its price should be 20.
+## Making Pottery at the Wheel
 
-```js
-const potteryToSell = []
+1. Create a `scripts/PotteryWheel.js` module.
+1. Define a module-level variable to create the primary key for each piece of pottery. It should have an initial value of 1.
+1. Define and export a function named `makePottery`.
+1. The `makePottery` function must accept the following values as input, in the following order.
+    1. Shape of the piece of pottery (e.g. "Mug", "Platter")
+    1. Weight of the piece (e.g. 1, 5)
+    1. Height of the piece (e.g. 3, 7)
+1. The `makePottery` function must return an object with the following properties on it.
+    1. `shape`
+    1. `weight`
+    1. `height`
+    1. `id` _(increment this value each time the function is invoked)_
 
+## Firing the Pottery in the Kiln
 
-// Define your functions
+1. Define a `scripts/Kiln.js` module.
+1. Define and export a function named `firePottery` that is responsible for acting as a kiln.
+1. The function must accept the following values as input, in the following order.
+    1. An object representing a piece of pottery that was made at the wheel.
+    1. A number specifying the firing temperature of the kiln.
+1. The function must add a new property of `fired` with the value of `true` to the object. It should output the pottery object.
+1. The function must add a new property of `cracked` to the object.
+    1. If the temperature of the kiln is above 2200 degrees then `cracked` property must have a value of `true`.
+    1. If the temperature of the kiln is at, or below,  2200 degrees then `cracked` property must have a value of `false`.
 
+## Pricing Uncracked Pottery
 
-// Create 5 pieces of pottery, some cracked and some not.
-// Non-cracked pottery should be added to the collection
-// of pottery to sell at the craft show.
-```
-
-When you are done, push your branch to Github, create a pull request and then merge your branch into `master`. Then pull the new master down to your machine.
+1. Create a `scripts/PotteryCatalog.js` module.
+1. Define a module-level variable with a value of an empty array. This array will store pottery that will be sold.
+1. Define and export a function named `toSellOrNotToSell` that is responsible for determining if a piece of pottery should be sold.
+1. The `toSellOrNotToSell` function must accept a pottery object as input.
+1. If the weight of the piece of pottery is greater than, or equal to, 6 then the function must add a `price` property with a value of 40.
+1. If the weight of the piece of pottery is less than 6 then the function must add a `price` property with a value of 20.
+1. If the pottery is **not** cracked, add the object to the module-level array of items to be sold.
+1. Define and export a function named `usePottery` returns a copy of the module-level array of items to be sold. Recall which array method creates a copy of the array.
 
 ## The Hairy Potter - Part II
 
