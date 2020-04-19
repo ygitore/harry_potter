@@ -24,27 +24,14 @@ test('Pottery is rendered to DOM', async () => {
     await page.goto('http://localhost:8080');
     await page.waitForSelector('.potteryList')
 
-    const html = await page.$eval('.potteryList', _ => _.innerHTML)
+    let section = await page.$eval('.potteryList', _ => _.innerHTML)
 
-    expect(html).toBe(`
-<section class="pottery">
-    <h2 class="pottery__shape">Ornament</h2>
-    <div class="pottery_properties">
-        Item weighs 2 grams and is 5 cm in height
-    </div>
-    <div class="pottery__price">
-        Price is $20
-    </div>
-</section>
-<section class="pottery">
-    <h2 class="pottery__shape">Platter</h2>
-    <div class="pottery_properties">
-        Item weighs 7 grams and is 2 cm in height
-    </div>
-    <div class="pottery__price">
-        Price is $40
-    </div>
-</section>`);
+    section = section.replace(/\n/g, "")
+    section = section.replace(/\s{2,}/g, "")
+
+    expect(section).toBe(`<section class="pottery"><h2 class="pottery__shape">Ornament</h2><div class="pottery_properties">Item weighs 2 grams and is 5 cm in height</div><div class="pottery__price">Price is $20</div></section><section class="pottery"><h2 class="pottery__shape">Platter</h2><div class="pottery_properties">Item weighs 7 grams and is 2 cm in height</div><div class="pottery__price">Price is $40</div></section>`);
+
+    browser.close()
 })
 
 
