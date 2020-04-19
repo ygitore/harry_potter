@@ -4,6 +4,11 @@
 
 In this exercise, your task to build a workflow for making, and firing pottery, and then determining if it should be sold at a craft show. Then you will display the pottery to be sold in the DOM.
 
+## Setup
+
+1. Once the project is cloned, run `npm install` in the project directory.
+1. To test your code, use the `npm run test` command.
+
 ## Making Pottery at the Wheel
 
 1. Create a `scripts/PotteryWheel.js` module.
