@@ -7,7 +7,11 @@ In this exercise, your task to build a workflow for making, and firing pottery, 
 ## Setup
 
 1. Once the project is cloned, run `npm install` in the project directory.
-1. To test your code, use the `npm run test` command.
+1. To test your code, use the `npm run test` command. You will see all of the tests for your code - which ones pass, and which ones fail. As soon as you make changes to your code, the tests will run automatically.
+    ![](./jest-initial.gif)
+1. Once all of your tests pass, this will be the output.
+    ![](./jest-test-run.gif)
+
 
 ## Making Pottery at the Wheel
 
