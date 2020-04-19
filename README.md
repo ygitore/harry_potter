@@ -69,3 +69,5 @@ In this exercise, you are going to create HTML representations of the pottery yo
     </section>
     ```
 1. Once all pottery objects have been converted to HTML representation strings, update the inner HTML of the `<article>` element with that string.
+
+![example output](./pottery.png)
