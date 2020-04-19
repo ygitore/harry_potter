@@ -31,9 +31,3 @@ test('Pottery is rendered to DOM', async () => {
     }
 
 })
-
-
-
-
-
-
