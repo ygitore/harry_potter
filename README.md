@@ -31,20 +31,40 @@ In this exercise, your task to build a workflow for making, and firing pottery, 
     1. `height`
     1. `id` _(increment this value each time the function is invoked)_
 
+#### Checking Your Work
+
 In the `main.js` module, invoke the `makePottery` function and provide the required values as arguments. Store the object that gets returned into a variable, and then use `console.log()` to view the object.
+
+
+Also look at your terminal window that is running the tests and make sure that the `Pottery object is created with correct properties` test is passing.
+
+Once you have it working, make 5 pieces of pottery in `main.js`.
 
 ## Firing the Pottery in the Kiln
 
 1. Define a `scripts/Kiln.js` module.
 1. Define and export a function named `firePottery` that is responsible for acting as a kiln.
-1. The function must accept the following values as input _(i.e. it needs parameters)_, in the following order.
-    1. An object representing a piece of pottery that was made at the wheel.
+1. The function must accept the following values as input _(i.e. it needs parameters)_, in the following order. If you don't remember, you can easily [add new properties to objects in JavaScript](https://www.dyn-web.com/tutorials/object-literal/properties.php).
+    1. An object representing a piece of pottery that was made at the wheel in the `makePottery` function.
     1. A number specifying the firing temperature of the kiln.
 1. The function must add a new property of `fired` with the value of `true` to the object.
 1. The function must add a new property of `cracked` to the object.
     1. If the temperature of the kiln is above 2200 degrees then `cracked` property must have a value of `true`.
     1. If the temperature of the kiln is at, or below,  2200 degrees then `cracked` property must have a value of `false`.
 1. After both of the new properties have been added, return the augmented object.
+
+#### Checking Your Work
+
+In the `main.js` module, invoke the `firePottery` function for each of the 5 pieces of pottery you created. Ensure you provide the required values as arguments. Store the object that gets returned into a variable, and then use `console.log()` to view the objects and make sure it has the right properties on each.
+
+To check your work, make sure that at least one of your pieces of pottery is fired at a temperature that is too high.
+
+Also look at your terminal window that is running the tests and make sure that the following tests pass.
+
+* `Pottery marked as fired after going in the kiln`
+* `Pottery object is cracked when temperature is above 2200`
+* `Pottery object is uncracked when temperature is below 2200`
+
 
 ## Pricing Uncracked Pottery
 
@@ -56,6 +76,18 @@ In the `main.js` module, invoke the `makePottery` function and provide the requi
 1. If the weight of the piece of pottery is less than 6 then the function must add a `price` property with a value of 20.
 1. If the pottery is **not** cracked, add the object to the module-level array of items to be sold.
 1. Define and export a function named `usePottery` returns a copy of the array of items to be sold. Recall which array method creates a copy of the array.
+
+#### Checking Your Work
+
+In the `main.js` module, invoke the `toSellOrNotToSell` function for each of the 5 pieces of pottery you created. Ensure you provide the required value as an argument.
+
+Also look at your terminal window that is running the tests and make sure that the following tests pass.
+
+* `Piece is not priced when cracked`
+* `Not in array of items to sell when cracked`
+* `Piece is priced when not cracked`
+* `In array of items to sell when uncracked`
+* `Piece has correct price`
 
 ## Display the Catalog
 
@@ -85,11 +117,18 @@ In this exercise, you are going to create HTML representations of the pottery yo
     ```
 1. Once all pottery objects have been converted to HTML representation strings, update the inner HTML of the `<article>` element with that string.
 
-### Running the Program
+#### Checking Your Work
 
-In `main.js` invoke the pottery list component function to display your HTML in the browser.
+In the `main.js` module, invoke the `PotteryList` component function. Make sure your web server is running, and then visit http://localhost:8080 and you should see your uncracked pottery displayed. It should look similiar to this.
 
 ![example output](./pottery.png)
+
+
+Then look at your terminal window that is running the tests and make sure that the following tests pass.
+
+* `Pottery is rendered to DOM`
+
+
 
 ## Final Results
 
