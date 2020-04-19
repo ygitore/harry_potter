@@ -1,65 +1,137 @@
-# JavaScript Review
+# Core JavaScript Review
+
+## The Hairy Potter
+
+In this exercise, your task to build a workflow for making, and firing pottery, and then determining if it should be sold at a craft show. Then you will display the pottery to be sold in the DOM.
 
 ## Setup
 
-1. Fork this repository into your Github account.
-1. Clone your repo to your machine.
-1. Create a branch named `make-pottery-{your initials}`.
-1. Do all of your work for Part I on this branch.
+1. Open your terminal and `cd` to your workspace directory.
+1. Clone this project.
+1. Once the project is cloned, `cd the-hairy-potter` and then run `npm install`.
+1. Once the installations are complete, run the `npm run test` command (_see animation below_). You will see all of the tests for your code - which ones pass, and which ones fail. As soon as you make changes to your code, the tests will run automatically, so keep this terminal window open while you are working on this project. When you need to stop working on it, use the `Ctrl+C` keyboard shortcut to stop the tests from running.
 
-## The Hairy Potter - Part I
-
-In this exercise, your task to build a workflow for making, and firing pottery, and then determining if it should be sold at a craft show.
-
-1. Define a function that is responsible for making a piece of pottery.
-    1. The function should return a new object that represents a piece of pottery.
-    1. The object should describe the shape, weight, and height of the piece of pottery.
-    1. The function should take all three of those properties as input to generate the object.
-    1. The function should also add an `id` property to the object whose value is an integer, and each object should have a unique `id` value. Use a globally-scoped variable and increment it each time an object is created.
-1. Define a function that is responsible for acting as a kiln. It should take a pottery object as input and also the temperature of the kiln as input. It should add a new property of `fired` with the value of `true` to the object. It should output the pottery object.
-    1. If the temperature of the kiln is above 2200 degrees then the pottery object should have a new property of `cracked` added to it, with a value of `true`.
-    1. If the temperature of the kiln is below, or equal to, 2200 degrees then the pottery object should have a new property of `cracked` added to it, with a value of `false`.
-1. Define a function that is responsible for determining if a piece of pottery should be sold. Cracked pottery should not be sold, and non-cracked pottery should be sold.
-    1. If the weight of the piece of pottery is over 3, then it should get a `price` property with a value of 40.
-    1. If the weight is under 3, its price should be 20.
-
-```js
-const potteryToSell = []
+    ![](./jest-initial.gif)
 
 
-// Define your functions
+> **Note:** All of the code for this project will be created the `src` directory of the project. Open a new terminal session, and `cd` to the project directory again. Then you can `cd src` to change to that directory in your terminal. To check what's already in the `src` directory, use the `ls` command to see its contents.
+
+## Making Pottery at the Wheel
+
+1. Create a `scripts/PotteryWheel.js` module.
+1. Define a variable in the module to have the value of the primary key for each piece of pottery. It should have an initial value of 1.
+1. Define and export a function named `makePottery`.
+1. The `makePottery` function must accept the following values as input _(i.e. it needs parameters)_, in the following order.
+    1. Shape of the piece of pottery (e.g. "Mug", "Platter")
+    1. Weight of the piece (e.g. 1, 5)
+    1. Height of the piece (e.g. 3, 7)
+1. The `makePottery` function must return an object with the following properties on it.
+    1. `shape`
+    1. `weight`
+    1. `height`
+    1. `id` _(increment this value each time the function is invoked)_
+
+#### Checking Your Work
+
+In the `main.js` module, invoke the `makePottery` function and provide the required values as arguments. Store the object that gets returned into a variable, and then use `console.log()` to view the object.
 
 
-// Create 5 pieces of pottery, some cracked and some not.
-// Non-cracked pottery should be added to the collection
-// of pottery to sell at the craft show.
-```
+Also look at your terminal window that is running the tests and make sure that the `Pottery object is created with correct properties` test is passing.
 
-When you are done, push your branch to Github, create a pull request and then merge your branch into `master`. Then pull the new master down to your machine.
+Once you have it working, make 5 pieces of pottery in `main.js`.
 
-## The Hairy Potter - Part II
+## Firing the Pottery in the Kiln
+
+1. Define a `scripts/Kiln.js` module.
+1. Define and export a function named `firePottery` that is responsible for acting as a kiln.
+1. The function must accept the following values as input _(i.e. it needs parameters)_, in the following order. If you don't remember, you can easily [add new properties to objects in JavaScript](https://www.dyn-web.com/tutorials/object-literal/properties.php).
+    1. An object representing a piece of pottery that was made at the wheel in the `makePottery` function.
+    1. A number specifying the firing temperature of the kiln.
+1. The function must add a new property of `fired` with the value of `true` to the object.
+1. The function must add a new property of `cracked` to the object.
+    1. If the temperature of the kiln is above 2200 degrees then `cracked` property must have a value of `true`.
+    1. If the temperature of the kiln is at, or below,  2200 degrees then `cracked` property must have a value of `false`.
+1. After both of the new properties have been added, return the augmented object.
+
+#### Checking Your Work
+
+In the `main.js` module, invoke the `firePottery` function for each of the 5 pieces of pottery you created. Ensure you provide the required values as arguments. Store the object that gets returned into a variable, and then use `console.log()` to view the objects and make sure it has the right properties on each.
+
+To check your work, make sure that at least one of your pieces of pottery is fired at a temperature that is too high.
+
+Also look at your terminal window that is running the tests and make sure that the following tests pass.
+
+* `Pottery marked as fired after going in the kiln`
+* `Pottery object is cracked when temperature is above 2200`
+* `Pottery object is uncracked when temperature is below 2200`
+
+
+## Pricing Uncracked Pottery
+
+1. Create a `scripts/PotteryCatalog.js` module.
+1. Define a variable in the module with a value of an empty array. This array will store pottery that will be sold. Do not export this array.
+1. Define and export a function named `toSellOrNotToSell` that is responsible for determining if a piece of pottery should be sold.
+1. The `toSellOrNotToSell` function must accept a pottery object as input.
+1. If the weight of the piece of pottery is greater than, or equal to, 6 then the function must add a `price` property with a value of 40.
+1. If the weight of the piece of pottery is less than 6 then the function must add a `price` property with a value of 20.
+1. If the pottery is **not** cracked, add the object to the module-level array of items to be sold.
+1. Define and export a function named `usePottery` returns a copy of the array of items to be sold. Recall which array method creates a copy of the array.
+
+#### Checking Your Work
+
+In the `main.js` module, invoke the `toSellOrNotToSell` function for each of the 5 pieces of pottery you created. Ensure you provide the required value as an argument.
+
+Also look at your terminal window that is running the tests and make sure that the following tests pass.
+
+* `Piece is not priced when cracked`
+* `Not in array of items to sell when cracked`
+* `Piece is priced when not cracked`
+* `In array of items to sell when uncracked`
+* `Piece has correct price`
+
+## Display the Catalog
 
 In this exercise, you are going to create HTML representations of the pottery you want to sell at the craft fair and display them on the DOM. Then you will track which ones you sell.
 
-1. Create a branch named `sell-pottery-{your initials}`.
-1. Do all of your work on this branch.
-1. Create a function that outputs an HTML representation of a pottery object. The HTML representation should include a button labeled "Sell". The function should take the pottery object as input.
-1. Iterate the collection of pottery to sell and create an HTML representation of each one and add that representation to an `<article>` element in your DOM that has an `id` of `inventory`.
-1. When you click on the "Sell" button of any piece of pottery, use `window.alert` to present a message in the following format.
+### Define DOM Target
 
-```html
-You sold a {shape of pottery} for ${price}
-```
+1. Create an `<article>` element in the `index.html` file.
+1. The article element must have a class of `potteryList`.
 
-Once complete, push your branch to Github, create a pull request and merge your branch into master. Then pull down the new master to your machine.
+### Create Pottery HTML
 
-## The Hairy Potter - Part III
+1. Create a `scripts/PotteryList.js` module.
+1. Define and export a `PotteryList` function.
+1. The `PotteryList` function must get the items to be sold from the `PotteryCatalog.js` module.
+1. The `PotteryList` function must convert each object in the array to an HTML representation string. Use the following template to generate the representations.
+    ```html
+    <section class="pottery" id="pottery--1">
+        <h2 class="pottery__shape">Mug</h2>
+        <div class="pottery__properties">
+            Item weighs 3 grams and is 6 cm in height
+        </div>
+        <div class="pottery__price">
+            Price is $20
+        </div>
+    </section>
+    ```
+1. Once all pottery objects have been converted to HTML representation strings, update the inner HTML of the `<article>` element with that string.
 
-In this exercise, you are going to use `json-server` to expose an API containing JSON representations of pottery items, and then write JavaScript to get data from the API.
+#### Checking Your Work
 
-1. Create an `api` sub-directory in your project directory.
-1. In that directory, create a `pottery.json` file.
-1. In that file, create a `pottery` resource array and create 5 pottery JSON representations in that array. Each one should have all of the properties listed in Part 1 of this exercise.
-1. Start `json-server`.
-1. Instead of building your array from the 3 functions you defined in Part 1, use `fetch` to get the data from your API.
-1. Once you have the data, use it for Part 2 of this exercise.
+In the `main.js` module, invoke the `PotteryList` component function. Make sure your web server is running, and then visit http://localhost:8080 and you should see your uncracked pottery displayed. It should look similiar to this.
+
+![example output](./pottery.png)
+
+
+Then look at your terminal window that is running the tests and make sure that the following tests pass.
+
+* `Pottery is rendered to DOM`
+
+
+
+## Final Results
+
+Once all of your tests pass, this will be the output of the terminal that is running the tests.
+
+![](./jest-test-run.gif)
