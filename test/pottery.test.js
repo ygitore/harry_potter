@@ -46,9 +46,6 @@ describe('Firing the pottery in the kiln with the correct temperate', () => {
     })
 })
 
-
-
-
 describe('Do not sell cracked pottery', () => {
     let catalog = []
 
@@ -66,7 +63,6 @@ describe('Do not sell cracked pottery', () => {
         expect( catalog.length ).toBe( 0 )
     })
 })
-
 
 describe('Sell uncracked pottery', () => {
     let catalog = []

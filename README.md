@@ -1,8 +1,8 @@
 # Core JavaScript Review
 
-## The Hairy Potter - Part I
+## The Hairy Potter
 
-In this exercise, your task to build a workflow for making, and firing pottery, and then determining if it should be sold at a craft show.
+In this exercise, your task to build a workflow for making, and firing pottery, and then determining if it should be sold at a craft show. Then you will display the pottery to be sold in the DOM.
 
 ## Making Pottery at the Wheel
 
@@ -42,21 +42,38 @@ In this exercise, your task to build a workflow for making, and firing pottery, 
 1. If the pottery is **not** cracked, add the object to the module-level array of items to be sold.
 1. Define and export a function named `usePottery` returns a copy of the module-level array of items to be sold. Recall which array method creates a copy of the array.
 
-## The Hairy Potter - Part II
+## Display the Catalog
 
 In this exercise, you are going to create HTML representations of the pottery you want to sell at the craft fair and display them on the DOM. Then you will track which ones you sell.
 
-1. Create a branch named `sell-pottery-{your initials}`.
-1. Do all of your work on this branch.
-1. Create a function that outputs an HTML representation of a pottery object. The HTML representation should include a button labeled "Sell". The function should take the pottery object as input.
-1. Iterate the collection of pottery to sell and create an HTML representation of each one and add that representation to an `<article>` element in your DOM that has an `id` of `inventory`.
+### Define DOM Target
+
+1. Create an `<article>` element in the `index.html` file.
+1. The article element must have a class of `potteryList`.
+
+### Create Pottery HTML
+
+1. Create a `scripts/PotteryList.js` module.
+1. Define and export a `PotteryList` function.
+1. The `PotteryList` function must get the items to be sold from the `PotteryCatalog.js` module.
+1. The `PotteryList` function must convert each object in the array to an HTML representation string. Use the following template to generate the representations.
+    ```html
+    <section class="pottery" id="pottery--1">
+        <h2 class="pottery__shape">Mug</h2>
+        <div class="pottery__properties">
+            Item weighs 3 grams and is 6 cm in height
+        </div>
+        <div class="pottery__price">
+            Price is $20
+        </div>
+    </section>
+    ```
+1. Once all pottery objects have been converted to HTML representation strings, update the inner HTML of the `<article>` element with that string.
 1. When you click on the "Sell" button of any piece of pottery, use `window.alert` to present a message in the following format.
 
 ```html
 You sold a {shape of pottery} for ${price}
 ```
-
-Once complete, push your branch to Github, create a pull request and merge your branch into master. Then pull down the new master to your machine.
 
 ## The Hairy Potter - Part III
 
