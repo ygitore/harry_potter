@@ -15,8 +15,8 @@ let stoneware = makePottery()
 
 // Fire each piece of pottery in the kiln
 
-firePottery()
+firePottery(p(2,3,4), 2000)
 // Determine which ones should be sold, and their price
-
+toSellOrNotToSell(p(2,3,4))
 
 // Invoke the component function that renders the HTML list
